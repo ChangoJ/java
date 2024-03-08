@@ -11,22 +11,22 @@ public class TestPersona {
 		Persona p2; //variable p tipo persona
 		p2 = new Persona(); //intanaciar un objero
 		
-		p.nombre = "Maria";
-		p.edadPersona =45;
-		p.estatura = 1.56;
+		p.setNombre("Maria");
+        p.setEdadPersona(45);
+        p.setEstatura(1.56);
+        
+		System.out.println("Nombre: " + p.getNombre());
+        System.out.println("Edad: " + p.getEdadPersona());
+        System.out.println("Estatura: " + p.getEstatura());
 		
-		System.out.println("Nombre "+ p.nombre);
-		System.out.println("Edad "+ p.edadPersona);
-		System.out.println("Estatura "+ p.estatura);
 		
+        p2.setNombre("Juan");
+        p2.setEdadPersona(22);
+        p2.setEstatura(1.76);
 		
-		p2.nombre = "Juan";
-		p2.edadPersona =22;
-		p2.estatura = 1.76;
-		
-		System.out.println("Nombre "+ p2.nombre);
-		System.out.println("Edad "+ p2.edadPersona);
-		System.out.println("Estatura "+ p2.estatura);
+		System.out.println("Nombre: " + p2.getNombre());
+        System.out.println("Edad: " + p2.getEdadPersona());
+        System.out.println("Estatura: " + p2.getEstatura());
 		
 	}
 

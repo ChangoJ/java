@@ -8,15 +8,16 @@ public class TestRectangulo {
 		int area2;
 		double perimetro;
 		
-		rectangulo.base = 10;
-		rectangulo.altura = 5;
-		
-		rectangulo2.base = 8;
-		rectangulo2.altura = 3;
-		
-		area = rectangulo.calcularArea();
-		area2 = rectangulo2.calcularArea();
-		perimetro = rectangulo.calcularPerimetro();
+		 
+        rectangulo.setBase(10);
+        rectangulo.setAltura(5);
+        
+        rectangulo2.setBase(8);
+        rectangulo2.setAltura(3);
+        
+        area = rectangulo.calcularArea();
+        area2 = rectangulo2.calcularArea();
+        perimetro = rectangulo.calcularPerimetro();
 		
 		System.out.println("Area de rectangulo: "+area);
 		System.out.println("\nArea de rectangulo 2: "+area2);
