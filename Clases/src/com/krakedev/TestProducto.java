@@ -4,25 +4,10 @@ public class TestProducto {
 
 	public static void main(String[] args) {
 
-		Producto productoA = new Producto();
-		Producto productoB = new Producto();
-		Producto productoC = new Producto();
-
-		productoA.setNombre("Paracetamol");
-		productoA.setDescripcion("Medicamento");
-		productoA.setPrecio(5.99);
-		productoA.setStockActual(10);
-
-		productoB.setNombre("Pasta dental");
-		productoB.setDescripcion("Higiene bucal");
-		productoB.setPrecio(2.49);
-		productoB.setStockActual(20);
-
-		productoC.setNombre("Vitamina C");
-		productoC.setDescripcion("Suplemento");
-		productoC.setPrecio(8.99);
-		productoC.setStockActual(15);
-
+		Producto productoA = new Producto("Paracetamol", "Medicamento", 5.99, 10);
+		Producto productoB = new Producto("Pasta dental", "Higiene bucal", 2.49, 20);
+		Producto productoC = new Producto("Vitamina C", "Suplemento", 8.99, 15);
+		
 		System.out.println("Producto A:");
 		System.out.println("Nombre: " + productoA.getNombre());
 		System.out.println("Descripción: " + productoA.getDescripcion());
