@@ -19,13 +19,24 @@ public class Cuenta {
 		this.saldo = saldo;
 	}
 	
-	public void imprimirConMiEstilo() {
+	public void imprimir() {
 		System.out.println("*****************\n"
 				+ "CUENTA\n"
 				+ "**********************\n"
 				+ "Número de cuenta: "+getId()+"\n"
 				+ "Tipo: "+getTipo()+"\n"
 				+ "Saldo: "+getSaldo()+"\n"
+				+ "************\n");
+	}
+	
+	public void imprimirConMiEstilo() {
+		System.out.println("*****************\n"
+				+ "CUENTA"+getId()+"\n"
+				+ "**********************\n"
+				+ "Número de cuenta: "+getId()+"\n"
+				+ "Tipo: "+getTipo()+"\n"
+				+ "Saldo: "+getSaldo()+"\n"
+			    + "CREADO POR MR.CHANGO"
 				+ "************\n");
 	}
 	

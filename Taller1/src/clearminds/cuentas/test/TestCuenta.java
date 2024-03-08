@@ -18,9 +18,9 @@ public class TestCuenta {
 		cuenta4.setSaldo(10);
 		
 		System.out.println("------VALORES INICIALES---");
-		cuenta1.imprimirConMiEstilo();
-		cuenta2.imprimirConMiEstilo();
-		cuenta3.imprimirConMiEstilo();
+		cuenta1.imprimir();
+		cuenta2.imprimir();
+		cuenta3.imprimir();
 		System.out.println("------VALORES MODIFICADOS---");
 		
 		cuenta4.imprimirConMiEstilo();
