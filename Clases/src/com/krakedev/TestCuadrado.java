@@ -24,12 +24,12 @@ public class TestCuadrado {
 		perimetro2 = cuadrado2.calcularPerimetro();
 		perimetro3 = cuadrado3.calcularPerimetro();
 		
-		System.out.println("Area de rectangulo: "+area);
-		System.out.println("\nArea de rectangulo 2: "+area2);
-		System.out.println("\nArea de rectangulo 2: "+area3);
-		System.out.println("\nPerimetro de rectangulo 2: "+perimetro);
-		System.out.println("\nPerimetro de rectangulo 2: "+perimetro2);
-		System.out.println("\nPerimetro de rectangulo 2: "+perimetro3);
+		System.out.println("Area de cuadrado: "+area);
+		System.out.println("\nArea de cuadrado 2: "+area2);
+		System.out.println("\nArea de cuadrado 3: "+area3);
+		System.out.println("\nPerimetro de cuadrado : "+perimetro);
+		System.out.println("\nPerimetro de cuadrado 2: "+perimetro2);
+		System.out.println("\nPerimetro de cuadrado 3: "+perimetro3);
 		
 	}
 }
