@@ -14,7 +14,7 @@ public class TestGanador {
         listaJugadores.add("jugador 2");
         listaJugadores.add("jugador 3");
         jugadores.setJugadores(listaJugadores);
-        Juego juego = new Juego(jugadores.getJugadores(), jugadores);
+        Juego juego = new Juego(jugadores.getJugadores());
         juego.entregarCartas(5);
 
         for (int i = 0; i < jugadores.getJugadores().size(); i++) {

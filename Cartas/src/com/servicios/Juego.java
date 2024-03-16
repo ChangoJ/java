@@ -9,11 +9,11 @@ import com.entidades.Naipe;
 public class Juego {
 	private Naipe naipe;
 	ArrayList<Carta> naipeBarajado;
-	private Jugadores jugadores;
+	private ArrayList<String> jugadores;
 	private ArrayList<ArrayList<Carta>> cartasJugador = new ArrayList<>();
 
-	public Juego(ArrayList<String> idsJugadores, Jugadores jugadores) {
-		this.jugadores = jugadores;
+	public Juego(ArrayList<String> idsJugadores) {
+		this.jugadores = idsJugadores;
 		for (String idJugador : idsJugadores) {
 			ArrayList<Carta> cartaJugador = new ArrayList<Carta>();
 			cartasJugador.add(cartaJugador);
@@ -52,7 +52,7 @@ public class Juego {
 				idGanador = i;
 			}
 		}
-		ganador = jugadores.getJugadores().get(idGanador);
+		ganador = jugadores.get(idGanador);
 
 		return ganador;
 	}
@@ -61,7 +61,7 @@ public class Juego {
 
 		Naipe naipe = new Naipe();
 		naipeBarajado = naipe.barajar();
-		int numeroJugadores = jugadores.getJugadores().size();
+		int numeroJugadores = jugadores.size();
 		int cartaActual = 0;
 		for (int i = 0; i < cartasPorJugador; i++) {
 			for (int j = 0; j < numeroJugadores; j++) {
