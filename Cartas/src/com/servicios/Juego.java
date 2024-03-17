@@ -3,7 +3,6 @@ package com.servicios;
 import java.util.ArrayList;
 
 import com.entidades.Carta;
-import com.entidades.Jugadores;
 import com.entidades.Naipe;
 
 public class Juego {
@@ -21,7 +20,7 @@ public class Juego {
 	}
 
 	public Juego() {
-		Naipe naipe = new Naipe();
+		naipe = new Naipe();
 		naipeBarajado = naipe.barajar();
 		System.out.println(naipeBarajado);
 		System.out.println("Hola");
@@ -59,7 +58,7 @@ public class Juego {
 
 	public void entregarCartas(int cartasPorJugador) {
 
-		Naipe naipe = new Naipe();
+		naipe = new Naipe();
 		naipeBarajado = naipe.barajar();
 		int numeroJugadores = jugadores.size();
 		int cartaActual = 0;
