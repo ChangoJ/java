@@ -2,8 +2,10 @@ package com.krakedev.persistencia.servicios;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Time;
+import java.util.ArrayList;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -105,5 +107,46 @@ public class AdminEstudiantes {
 				throw new Exception("Error con la base de datos");
 			}
 		}
+	}
+	
+	public static  ArrayList<Estudiante> buscarPorEmail(String email) throws Exception{
+		ArrayList<Estudiante> estudiantes = new ArrayList<Estudiante>();
+		Connection connection = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		try {
+			connection = ConexionBDD.conectar();
+			ps = connection.prepareStatement("SELECT * FROM estudiantes WHERE email like ? ");
+			ps.setString(1, "%"+email+"%");
+			
+			rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				String nombre = rs.getString("nombre");
+				String cedula = rs.getString("cedula");
+				String emailE = rs.getString("email");
+				Estudiante estudiante = new Estudiante();
+				estudiante.setNombre(nombre);
+				estudiante.setCedula(cedula);
+				estudiante.setEmail(emailE);
+				estudiantes.add(estudiante);
+			}
+			
+			
+			
+		} catch (Exception e) {
+			LOGGER.error("Error en la consulta",e);
+			throw new Exception("Error en la consulta");
+		}finally {
+			try {
+				connection.close();
+			} catch (SQLException e2) {
+				LOGGER.error("Error con la base de datos",e2);
+				throw new Exception("Error con la base de datos");
+			}
+		}
+		
+		return estudiantes;
+		
 	}
 }

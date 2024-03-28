@@ -2,8 +2,10 @@ package com.krakedev.persistencia.servicios;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Time;
+import java.util.ArrayList;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -117,5 +119,125 @@ public class AdminPersonas {
 				throw new Exception("Error con la base de datos");
 			}
 		}
+	}
+	
+	public static ArrayList<Persona> buscarPorNombre(String nombreBusqueda) throws Exception{
+		ArrayList<Persona> personas = new ArrayList<Persona>();
+		Connection connection = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		try {
+			connection = ConexionBDD.conectar();
+			ps = connection.prepareStatement("SELECT * FROM personas WHERE nombre like ? ");
+			ps.setString(1, "%"+nombreBusqueda+"%");
+			
+			rs = ps.executeQuery();
+			
+			/*if(rs.next()) {
+				//crear persona etc
+			}
+			*/
+			while(rs.next()) {
+				String nombre = rs.getString("nombre");
+				String cedula = rs.getString("cedula");
+				Persona persona = new Persona();
+				persona.setNombre(nombre);
+				persona.setCedula(cedula);
+				personas.add(persona);
+			}
+			
+		} catch (Exception e) {
+			LOGGER.error("Error en la consulta",e);
+			throw new Exception("Error en la consulta");
+		}finally {
+			try {
+				connection.close();
+			} catch (SQLException e2) {
+				LOGGER.error("Error con la base de datos",e2);
+				throw new Exception("Error con la base de datos");
+			}
+		}
+		
+		return personas;
+		
+	}
+	
+	public static Persona buscarPorCedula(String cedula) throws Exception{
+		Persona persona = null;
+		Connection connection = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		try {
+			connection = ConexionBDD.conectar();
+			ps = connection.prepareStatement("SELECT * FROM personas WHERE cedula = ? ");
+			ps.setString(1, cedula);
+			
+			rs = ps.executeQuery();
+			
+			if(rs.next()) {
+				persona = new Persona();
+				persona.setCedula(rs.getString("cedula"));
+                persona.setNombre(rs.getString("nombre"));
+                persona.setApellido(rs.getString("apellido"));
+                
+			}
+			
+			
+			
+		} catch (Exception e) {
+			LOGGER.error("Error en la consulta",e);
+			throw new Exception("Error en la consulta");
+		}finally {
+			try {
+				connection.close();
+			} catch (SQLException e2) {
+				LOGGER.error("Error con la base de datos",e2);
+				throw new Exception("Error con la base de datos");
+			}
+		}
+		
+		return persona;
+		
+	}
+	
+	public static  ArrayList<Persona> buscarPorEstatura(double estatura) throws Exception{
+		ArrayList<Persona> personas = new ArrayList<Persona>();
+		Connection connection = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		try {
+			connection = ConexionBDD.conectar();
+			ps = connection.prepareStatement("SELECT * FROM personas WHERE estatura > ? ");
+			ps.setDouble(1, estatura);
+			
+			rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				String nombre = rs.getString("nombre");
+				String cedula = rs.getString("cedula");
+				double estaturaP = rs.getDouble("estatura");
+				Persona persona = new Persona();
+				persona.setNombre(nombre);
+				persona.setCedula(cedula);
+				persona.setEstatura(estaturaP);
+				personas.add(persona);
+			}
+			
+			
+			
+		} catch (Exception e) {
+			LOGGER.error("Error en la consulta",e);
+			throw new Exception("Error en la consulta");
+		}finally {
+			try {
+				connection.close();
+			} catch (SQLException e2) {
+				LOGGER.error("Error con la base de datos",e2);
+				throw new Exception("Error con la base de datos");
+			}
+		}
+		
+		return personas;
+		
 	}
 }

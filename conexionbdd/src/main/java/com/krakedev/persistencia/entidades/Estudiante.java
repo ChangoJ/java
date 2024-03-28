@@ -20,6 +20,10 @@ public class Estudiante {
 		this.codigoProfesor = codigoProfesor;
 	}
 
+	public Estudiante() {
+		// TODO Auto-generated constructor stub
+	}
+
 	public String getCedula() {
 		return cedula;
 	}
@@ -66,6 +70,12 @@ public class Estudiante {
 
 	public void setCodigoProfesor(Profesor codigoProfesor) {
 		this.codigoProfesor = codigoProfesor;
+	}
+
+	@Override
+	public String toString() {
+		return "Estudiante [cedula=" + cedula + ", nombre=" + nombre + ", apellido=" + apellido + ", email=" + email
+				+ ", fechaNacimiento=" + fechaNacimiento + ", codigoProfesor=" + codigoProfesor + "]";
 	}
 	
 	
