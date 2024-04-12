@@ -8,18 +8,21 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
 
+import com.krakedev.excepciones.KrakeDevException;
+
 public class ConexionBDD {
-	public static Connection obtenerConexion() {
+	public static Connection obtenerConexion() throws KrakeDevException {
 		Context ctx = null;
 		DataSource ds = null;
 		Connection con = null;
 		try {
 			ctx = new InitialContext();
+			//JNDI
 			ds = (DataSource) ctx.lookup("java:/comp/env/jdbc/ConexionPG");
 			con = ds.getConnection();
 		} catch (NamingException | SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
+			throw new KrakeDevException("Error de conexión");
 		}
 		
 		return con;
